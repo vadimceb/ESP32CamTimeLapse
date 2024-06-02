@@ -2,9 +2,10 @@
 #include "file.h"
 #include "camera.h"
 #include "lapse.h"
+#include "configs.h"
 
-const char *ssid = "";
-const char *password = "";
+const char *ssid = WIFI_SSID;
+const char *password = WIFI_PASSWORD;
 
 void startCameraServer();
 
