@@ -2,17 +2,20 @@
 #include "file.h"
 #include "camera.h"
 #include "lapse.h"
+#include "configs.h"
 
-const char *ssid = "...";
-const char *password = "...";
+const char *ssid = WIFI_SSID;
+const char *password = WIFI_PASSWORD;
 
 void startCameraServer();
 
 void setup()
 {
+	delay(1000);
 	Serial.begin(115200);
-	Serial.setDebugOutput(true);
+	// Serial.setDebugOutput(true);
 	Serial.println();
+	Serial.println("STARTING UP");
 	initFileSystem();
 	initCamera();
 
@@ -37,4 +40,5 @@ void loop()
 	unsigned long dt = t - ot;
 	ot = t;
 	processLapse(dt);
+	delay(1000);
 }

@@ -24,7 +24,7 @@
 
 const char *indexHtml =
 #include "index.h"
-	;
+;
 
 extern unsigned long frameInterval;
 
@@ -108,12 +108,12 @@ static esp_err_t capture_handler(httpd_req_t *req)
 
 static esp_err_t startLapseHandler(httpd_req_t *req)
 {
-	startLapse();
+	return startLapse();
 }
 
 static esp_err_t stopLapseHandler(httpd_req_t *req)
 {
-	stopLapse();
+	return stopLapse();
 }
 
 static esp_err_t streamHandler(httpd_req_t *req)
