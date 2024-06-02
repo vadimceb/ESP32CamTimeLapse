@@ -27,7 +27,9 @@ bool startLapse()
         {
             createDir(path);
             lastFrameDelta = 0;
+            Serial.println("set lapseRunning");
             lapseRunning = true;
+            Serial.println("lapseRunning setted up");
             return true;
         }
     }
@@ -41,7 +43,11 @@ bool stopLapse()
 
 bool processLapse(unsigned long dt)
 {
+    Serial.print("is lapseRunning: ");
+    Serial.println(lapseRunning);
     if(!lapseRunning) return false;
+
+    Serial.println("processLapse");
 
     lastFrameDelta += dt;
     if(lastFrameDelta >= frameInterval)
@@ -49,6 +55,9 @@ bool processLapse(unsigned long dt)
         lastFrameDelta -= frameInterval;
         camera_fb_t *fb = NULL;
         esp_err_t res = ESP_OK;
+
+        Serial.println("before get camera buffer");
+
         fb = esp_camera_fb_get();
         if (!fb)
         {
